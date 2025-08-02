@@ -3,6 +3,11 @@ cpu:
   permalink: /cpu
   description: 包含有关中央处理器（CPU）架构、性能指标、选购建议等方面的文章
 
+ai-gen-content:
+  label: AI 生成内容
+  permalink: /ai-gen
+  description: 由 AI 生成的内容，涵盖各种主题和技术
+
 big-little:
   label: 大小核
   permalink: /big-little
