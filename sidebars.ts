@@ -21,7 +21,7 @@ const sidebars: SidebarsConfig = {
       label: '硬件',
       items: [
         'basic/hardware/cpu',
-        'basic/hardware/gpu',
+        'basic/hardware/graph',
         'basic/hardware/memory',
         'basic/hardware/storage',
         'basic/hardware/motherboard',
