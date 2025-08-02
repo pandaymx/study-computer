@@ -83,6 +83,19 @@ const sidebars: SidebarsConfig = {
     },
   ],
 
+  toolSidebar: [
+    {
+      type: 'category',
+      label: '实用工具',
+      items: [
+        'tool/document-tools',
+        'tool/version-control-tools',
+        'tool/ide-tools',
+        'tool/containerization-tools',
+      ],
+    },
+  ],
+
   // But you can create a sidebar manually
   /*
   tutorialSidebar: [

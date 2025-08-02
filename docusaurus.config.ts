@@ -91,6 +91,12 @@ const config: Config = {
           position: 'left',
           label: '计算机科学基础',
         },
+        {
+          type: 'docSidebar',
+          sidebarId: 'toolSidebar',
+          position: 'left',
+          label: '实用工具',
+        },
         {to: '/blog', label: '博客', position: 'left'},
         {
           href: 'https://github.com/facebook/docusaurus',
