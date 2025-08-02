@@ -3,7 +3,7 @@
 以下是硬件相关的文档：
 
 - [CPU](cpu.md)
-- [GPU](gpu.md)
+- [GPU](graph.md)
 - [内存](memory.md)
 - [硬盘](storage.md)
 - [主板](motherboard.md)
