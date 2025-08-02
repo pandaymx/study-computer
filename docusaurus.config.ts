@@ -81,6 +81,12 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
+          sidebarId: 'computerAppSidebar',
+          position: 'left',
+          label: '计算机应用基础',
+        },
+        {
+          type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Tutorial',
