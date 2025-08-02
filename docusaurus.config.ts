@@ -87,6 +87,12 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
+          sidebarId: 'csSidebar',
+          position: 'left',
+          label: '计算机科学基础',
+        },
+        {
+          type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Tutorial',

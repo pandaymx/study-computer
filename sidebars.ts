@@ -61,6 +61,29 @@ const sidebars: SidebarsConfig = {
     },
   ],
 
+  csSidebar: [
+    {
+      type: 'category',
+      label: '数据结构',
+      items: ['cs/data-structures/data-structures'],
+    },
+    {
+      type: 'category',
+      label: '计算机网络',
+      items: ['cs/computer-networks/computer-networks'],
+    },
+    {
+      type: 'category',
+      label: '操作系统',
+      items: ['cs/operating-systems/operating-systems'],
+    },
+    {
+      type: 'category',
+      label: '计算机组成原理',
+      items: ['cs/computer-architecture/computer-architecture'],
+    },
+  ],
+
   // But you can create a sidebar manually
   /*
   tutorialSidebar: [
