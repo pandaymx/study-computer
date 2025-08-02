@@ -3,6 +3,16 @@ facebook:
   permalink: /facebook
   description: Facebook tag description
 
+cpu:
+  label: cpu
+  permalink: /cpu
+  description: CPU tag description
+
+big-little:
+  label: 大小核
+  permalink: /big-little
+  description: 大小核 tag description
+
 hello:
   label: Hello
   permalink: /hello
