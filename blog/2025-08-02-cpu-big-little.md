@@ -5,7 +5,7 @@ tags:
   - cpu
   - big-little
 authors:
-  - Yangshun Tay
+  - ppmb
 ---
 
 大小核架构深度解析：从移动端革命到计算未来
