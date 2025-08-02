@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "bun" # 使用 "npm"，同样适用于 bun, yarn, pnpm
+    directory: "/" # 项目根目录
+    schedule:
+      interval: "weekly" # 每周检查一次
+    commit-message:
+      prefix: "chore"
+      include: "scope"
