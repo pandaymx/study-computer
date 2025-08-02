@@ -1,8 +1,3 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
-
 cpu:
   label: cpu
   permalink: /cpu
@@ -12,18 +7,3 @@ big-little:
   label: 大小核
   permalink: /big-little
   description: 大小核 tag description
-
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
-
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
-
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
