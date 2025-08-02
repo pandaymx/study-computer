@@ -1,9 +1,9 @@
 cpu:
   label: cpu
   permalink: /cpu
-  description: CPU tag description
+  description: 包含有关中央处理器（CPU）架构、性能指标、选购建议等方面的文章
 
 big-little:
   label: 大小核
   permalink: /big-little
-  description: 大小核 tag description
+  description: 涉及 CPU 大小核（big.LITTLE）架构原理、调度机制及应用场景的文章
