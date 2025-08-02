@@ -50,6 +50,15 @@ const sidebars: SidebarsConfig = {
         'basic/devices/smartphone',
       ],
     },
+    {
+      type: 'category',
+      label: '系统与软件',
+      items: [
+        'basic/system/boot-and-bios',
+        'basic/system/permissions',
+        'basic/system/compression',
+      ],
+    },
   ],
 
   // But you can create a sidebar manually
