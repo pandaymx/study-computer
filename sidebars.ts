@@ -83,6 +83,13 @@ const sidebars: SidebarsConfig = {
     },
   ],
 
+  javaSidebar: [
+    {
+      type: 'category',
+      label: 'Java SE',
+      items: ['java/javase'],
+    },
+  ],
   toolSidebar: [
     {
       type: 'category',

@@ -105,6 +105,12 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
+          sidebarId: 'javaSidebar',
+          position: 'left',
+          label: 'Java',
+        },
+        {
+          type: 'docSidebar',
           sidebarId: 'toolSidebar',
           position: 'left',
           label: '实用工具',
