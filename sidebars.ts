@@ -87,7 +87,10 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Java SE',
-      items: ['java/javase/annotations'],
+      items: [
+        'java/javase/annotations',
+        'java/javase/modern-java',
+      ],
     },
   ],
   toolSidebar: [
