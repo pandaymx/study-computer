@@ -87,7 +87,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Java SE',
-      items: ['java/javase/README','java/javase/annotations'],
+      items: ['java/javase/annotations'],
     },
   ],
   toolSidebar: [
