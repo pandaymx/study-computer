@@ -90,6 +90,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'java/javase/annotations',
         'java/javase/exception-handling',
+        'java/javase/generics',
         'java/javase/modern-java',
       ],
     },
