@@ -89,6 +89,7 @@ const sidebars: SidebarsConfig = {
       label: 'Java SE',
       items: [
         'java/javase/annotations',
+        'java/javase/exception-handling',
         'java/javase/modern-java',
       ],
     },
