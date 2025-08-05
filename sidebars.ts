@@ -91,6 +91,7 @@ const sidebars: SidebarsConfig = {
         'java/javase/annotations',
         'java/javase/exception-handling',
         'java/javase/generics',
+        'java/javase/concurrency',
         'java/javase/modern-java',
       ],
     },
