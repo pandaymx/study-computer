@@ -88,6 +88,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Java SE',
       items: [
+        'java/javase/oop',
         'java/javase/annotations',
         'java/javase/exception-handling',
         'java/javase/generics',
