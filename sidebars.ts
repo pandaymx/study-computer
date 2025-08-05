@@ -59,7 +59,6 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
-
   csSidebar: [
     {
       type: 'category',
@@ -82,7 +81,6 @@ const sidebars: SidebarsConfig = {
       items: ['cs/computer-architecture/computer-architecture'],
     },
   ],
-
   javaSidebar: [
     {
       type: 'category',
@@ -97,6 +95,14 @@ const sidebars: SidebarsConfig = {
         'java/javase/network',
         'java/javase/concurrency',
         'java/javase/modern-java',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Jakarta EE',
+      items: [
+        'java/jakartaee/README',
+        'java/jakartaee/jdbc',
       ],
     },
   ],
