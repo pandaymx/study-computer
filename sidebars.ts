@@ -106,6 +106,7 @@ const sidebars: SidebarsConfig = {
         'java/jakartaee/servlet',
         'java/jakartaee/jsp',
         'java/jakartaee/filter',
+        'java/jakartaee/listener',
       ],
     },
   ],
