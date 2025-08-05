@@ -101,8 +101,8 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Jakarta EE',
       items: [
-        'java/jakartaee/README',
         'java/jakartaee/jdbc',
+        'java/jakartaee/tomcat',
       ],
     },
   ],
