@@ -105,6 +105,7 @@ const sidebars: SidebarsConfig = {
         'java/jakartaee/tomcat',
         'java/jakartaee/servlet',
         'java/jakartaee/jsp',
+        'java/jakartaee/filter',
       ],
     },
   ],
