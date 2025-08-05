@@ -103,6 +103,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'java/jakartaee/jdbc',
         'java/jakartaee/tomcat',
+        'java/jakartaee/servlet',
       ],
     },
   ],
