@@ -94,6 +94,7 @@ const sidebars: SidebarsConfig = {
         'java/javase/generics',
         'java/javase/collections',
         'java/javase/io',
+        'java/javase/network',
         'java/javase/concurrency',
         'java/javase/modern-java',
       ],
