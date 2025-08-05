@@ -1,17 +1,17 @@
-# Filter
+# 过滤器（Filter）
 
-## Introduction
+## 简介
 
-A Filter is a component in the Jakarta EE (formerly Java EE) specification that allows you to intercept and process requests and responses in a web application. Filters are commonly used for logging, authentication, authorization, and request/response modification.
+过滤器是 Jakarta EE（原 Java EE）规范中的组件，用于拦截和处理 Web 应用中的请求和响应。常用于日志记录、权限校验、请求修改等场景。
 
-## Key Features
+## 主要特性
 
-- Intercepts HTTP requests and responses
-- Can modify request and response objects
-- Supports chaining multiple filters
-- Configurable via web.xml or annotations
+- 拦截 HTTP 请求和响应
+- 可修改请求和响应对象
+- 支持多个过滤器链式调用
+- 可通过 web.xml 或注解配置
 
-## Basic Example
+## 基本用法示例
 
 ```java
 import jakarta.servlet.*;
@@ -23,13 +23,13 @@ public class LoggingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        System.out.println("Request URI: " + req.getRequestURI());
+        System.out.println("请求 URI: " + req.getRequestURI());
         chain.doFilter(request, response);
     }
 }
 ```
 
-## Configuration
+## 配置方式
 
 ### web.xml
 
@@ -44,7 +44,7 @@ public class LoggingFilter implements Filter {
 </filter-mapping>
 ```
 
-### Annotation
+### 注解
 
 ```java
 import jakarta.servlet.annotation.WebFilter;
@@ -53,14 +53,14 @@ import jakarta.servlet.annotation.WebFilter;
 public class LoggingFilter implements Filter { ... }
 ```
 
-## Common Use Cases
+## 常见应用
 
-- Logging and auditing
-- Authentication and authorization
-- Compression and encoding
-- Request/response modification
+- 日志记录与审计
+- 登录认证与权限校验
+- 压缩与编码
+- 请求/响应内容修改
 
-## References
+## 参考链接
 
-- [Jakarta Servlet Filter Specification](https://jakarta.ee/specifications/servlet/)
-- [Filter Tutorial](https://tomcat.apache.org/tomcat-9.0-doc/servletapi/index.html)
+- [Jakarta Servlet Filter 规范](https://jakarta.ee/specifications/servlet/)
+- [Filter 教程](https://tomcat.apache.org/tomcat-9.0-doc/servletapi/index.html)

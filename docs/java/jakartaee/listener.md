@@ -1,22 +1,22 @@
-# Listener
+# 监听器（Listener）
 
-## Introduction
+## 简介
 
-A Listener in Jakarta EE (formerly Java EE) is a component that allows you to monitor and respond to events in a web application, such as application startup/shutdown, session creation/destruction, and request lifecycle events.
+监听器是 Jakarta EE（原 Java EE）规范中的组件，用于监听 Web 应用中的各种事件，如应用启动/销毁、会话创建/销毁、请求生命周期等。
 
-## Key Features
+## 主要特性
 
-- Listens for application, session, or request events
-- Can be used for resource management, logging, statistics, etc.
-- Configurable via web.xml or annotations
+- 监听应用、会话或请求级别事件
+- 常用于资源管理、统计、日志等
+- 可通过 web.xml 或注解配置
 
-## Common Types
+## 常见类型
 
-- ServletContextListener: Application lifecycle
-- HttpSessionListener: Session lifecycle
-- ServletRequestListener: Request lifecycle
+- ServletContextListener：应用生命周期
+- HttpSessionListener：会话生命周期
+- ServletRequestListener：请求生命周期
 
-## Basic Example
+## 基本用法示例
 
 ```java
 import jakarta.servlet.ServletContextEvent;
@@ -25,16 +25,16 @@ import jakarta.servlet.ServletContextListener;
 public class AppListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("Application started");
+        System.out.println("应用启动");
     }
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("Application stopped");
+        System.out.println("应用关闭");
     }
 }
 ```
 
-## Configuration
+## 配置方式
 
 ### web.xml
 
@@ -44,7 +44,7 @@ public class AppListener implements ServletContextListener {
 </listener>
 ```
 
-### Annotation
+### 注解
 
 ```java
 import jakarta.servlet.annotation.WebListener;
@@ -53,13 +53,13 @@ import jakarta.servlet.annotation.WebListener;
 public class AppListener implements ServletContextListener { ... }
 ```
 
-## Common Use Cases
+## 常见应用
 
-- Resource initialization and cleanup
-- Logging and monitoring
-- Counting online users
+- 资源初始化与释放
+- 日志与监控
+- 在线用户统计
 
-## References
+## 参考链接
 
-- [Jakarta Servlet Listener Specification](https://jakarta.ee/specifications/servlet/)
-- [Listener Tutorial](https://tomcat.apache.org/tomcat-9.0-doc/servletapi/index.html)
+- [Jakarta Servlet Listener 规范](https://jakarta.ee/specifications/servlet/)
+- [Listener 教程](https://tomcat.apache.org/tomcat-9.0-doc/servletapi/index.html)
