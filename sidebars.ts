@@ -67,6 +67,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'LeetCode',
+      items: ['cs/leetcode/leetcode'],
+    },
+    {
+      type: 'category',
       label: '计算机网络',
       items: ['cs/computer-networks/computer-networks'],
     },
