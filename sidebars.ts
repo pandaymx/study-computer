@@ -68,7 +68,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'LeetCode',
-      items: ['cs/leetcode/leetcode'],
+      items: ['cs/leetcode/README'],
     },
     {
       type: 'category',
