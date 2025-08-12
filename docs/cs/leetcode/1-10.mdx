@@ -1,0 +1,791 @@
+---
+sidebar_position: 1
+---
+
+# LeetCode 1-10 解析
+
+## 两数之和
+
+### 题目描述
+
+给定一个整数数组 `nums` 和一个目标值 `target`，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。
+
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
+
+你可以按任意顺序返回答案。
+
+### 示例
+
+输入：`nums = [2, 7, 11, 15], target = 9`
+
+输出：`[0, 1]`
+
+解释：因为 `nums[0] + nums[1] == 9`，返回 `[0, 1]`。
+
+### 暴力解法
+
+**核心原理**
+
+通过双重循环遍历数组，检查每对数字的和是否等于目标值。外层循环从 0 开始，内层循环从 i + 1 开始，以避免重复计算。
+
+**代码**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId='leetcode'>
+<TabItem value="py" label="Python">
+
+```py
+def two_sum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return None
+```
+
+</TabItem>
+<TabItem value="c" label="C">
+
+```c
+#include <stdio.h>
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+    static int result[2];
+    for (int i = 0; i < numsSize; i++) {
+        for (int j = i + 1; j < numsSize; j++) {
+            if (nums[i] + nums[j] == target) {
+                result[0] = i;
+                result[1] = j;
+                *returnSize = 2;
+                return result;
+            }
+        }
+    }
+    *returnSize = 0;
+    return NULL;
+}
+```
+
+</TabItem>
+<TabItem value="cpp" label="C++">
+
+```cpp
+#include <vector>
+using namespace std;
+
+vector<int> twoSum(vector<int>& nums, int target) {
+    for (int i = 0; i < nums.size(); i++) {
+        for (int j = i + 1; j < nums.size(); j++) {
+            if (nums[i] + nums[j] == target) {
+                return {i, j};
+            }
+        }
+    }
+    return {};
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+public int[] twoSum(int[] nums, int target) {
+    for (int i = 0; i < nums.length; i++) {
+        for (int j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] == target) {
+                return new int[] {i, j};
+            }
+        }
+    }
+    return null;
+}
+```
+
+</TabItem>
+<TabItem value="csharp" label="C#">
+
+```csharp
+public int[] TwoSum(int[] nums, int target) {
+    for (int i = 0; i < nums.Length; i++) {
+        for (int j = i + 1; j < nums.Length; j++) {
+            if (nums[i] + nums[j] == target) {
+                return new int[] {i, j};
+            }
+        }
+    }
+    return null;
+}
+```
+
+</TabItem>
+<TabItem value="js" label="JavaScript">
+
+```js
+function twoSum(nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
+    }
+    return null;
+}
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+func twoSum(nums []int, target int) []int {
+    for i := 0; i < len(nums); i++ {
+        for j := i + 1; j < len(nums); j++ {
+            if nums[i]+nums[j] == target {
+                return []int{i, j}
+            }
+        }
+    }
+    return nil
+}
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+fn two_sum(nums: Vec<i32>, target: i32) -> Option<(usize, usize)> {
+    for i in 0..nums.len() {
+        for j in i + 1..nums.len() {
+            if nums[i] + nums[j] == target {
+                return Some((i, j));
+            }
+        }
+    }
+    None
+}
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+fun twoSum(nums: IntArray, target: Int): IntArray? {
+    for (i in nums.indices) {
+        for (j in i + 1 until nums.size) {
+            if (nums[i] + nums[j] == target) {
+                return intArrayOf(i, j)
+            }
+        }
+    }
+    return null
+}
+```
+
+</TabItem>
+<TabItem value="ts" label="TypeScript">
+
+```ts
+function twoSum(nums: number[], target: number): number[] | null {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
+    }
+    return null;
+}
+```
+
+</TabItem>
+</Tabs>
+
+**代码解析**
+
+- `for i in(len(nums))`: 外层循环遍历数组的每个元素。
+- `for j in(range(i + 1, len(nums)))`: 内层循环从 i + 1 开始，避免重复计算。
+- `if nums[i] + nums[j] == target`：判断条件，是否找到结果。
+
+**算法分析**
+
+- 时间复杂度：O(n^2)，其中 n 是数组的长度。最坏情况下需要检查每对数字。
+- 空间复杂度：O(1)，只使用了常数级别的额外空间。
+
+### 优化解法
+
+对于暴力解法，通过内层循环导致时间复杂度较高。将原本相加找到的值，修改为相减，需要找到 `target -x ` 的数。通过使用哈希表（字典）存储数组元素及其下标，遍历数组时检查目标值与当前元素的差值是否在哈希表中。无需遍历内层循环即可直接找到对应的值。
+
+**核心原理**
+
+创建空的哈希表，存放已遍历的数组元素及其下标。以数组元素为 Key，数组下标为 Value。计算 `target - x` 的值时，检查该值是否在哈希表中，如果存在，则直接返回对应的下标。不存在则将当前元素及其下标存入哈希表。
+
+<Tabs groupId='leetcode'>
+<TabItem value="py" label="Python">
+
+```py
+def two_sum(nums, target):
+    num_dict = {}
+    for i, num in enumerate(nums):
+        diff = target - num
+        if diff in num_dict:
+            return [num_dict[diff], i]
+        num_dict[num] = i
+    return None
+```
+
+</TabItem>
+<TabItem value="c" label="C">
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct HashTable {
+    int key;
+    int value;
+};
+
+unsigned int hash(int key) {
+    return key % 1000;
+}
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+    static int result[2];
+    struct HashTable* table = (struct HashTable*)calloc(1000, sizeof(struct HashTable));
+    for (int i = 0; i < numsSize; i++) {
+        int diff = target - nums[i];
+        int hashIndex = hash(diff);
+        if (table[hashIndex].key != 0 || table[hashIndex].value != 0) {
+            result[0] = i;
+            result[1] = table[hashIndex].value;
+            *returnSize = 2;
+            free(table);
+            return result;
+        }
+        hashIndex = hash(nums[i]);
+        table[hashIndex].key = nums[i];
+        table[hashIndex].value = i;
+    }
+    free(table);
+    *returnSize = 0;
+    return NULL;
+}
+```
+
+</TabItem>
+<TabItem value="cpp" label="C++">
+
+```cpp
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int, int> num_map;
+    for (int i = 0; i < nums.size(); i++) {
+        int diff = target - nums[i];
+        if (num_map.find(diff) != num_map.end()) {
+            return {num_map[diff], i};
+        }
+        num_map[nums[i]] = i;
+    }
+    return {};
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+import java.util.HashMap;
+
+public int[] twoSum(int[] nums, int target) {
+    HashMap<Integer, Integer> numMap = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int diff = target - nums[i];
+        if (numMap.containsKey(diff)) {
+            return new int[] {numMap.get(diff), i};
+        }
+        numMap.put(nums[i], i);
+    }
+    return null;
+}
+```
+
+</TabItem>
+<TabItem value="csharp" label="C#">
+
+```csharp
+using System.Collections.Generic;
+
+public int[] TwoSum(int[] nums, int target) {
+    Dictionary<int, int> numDict = new Dictionary<int, int>();
+    for (int i = 0; i < nums.Length; i++) {
+        int diff = target - nums[i];
+        if (numDict.ContainsKey(diff)) {
+            return new int[] {numDict[diff], i};
+        }
+        numDict[nums[i]] = i;
+    }
+    return null;
+}
+```
+
+</TabItem>
+<TabItem value="js" label="JavaScript">
+
+```js
+function twoSum(nums, target) {
+    const numMap = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        const diff = target - nums[i];
+        if (numMap.has(diff)) {
+            return [numMap.get(diff), i];
+        }
+        numMap.set(nums[i], i);
+    }
+    return null;
+}
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+func twoSum(nums []int, target int) []int {
+    numMap := make(map[int]int)
+    for i, num := range nums {
+        diff := target - num
+        if j, ok := numMap[diff]; ok {
+            return []int{j, i}
+        }
+        numMap[num] = i
+    }
+    return nil
+}
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+use std::collections::HashMap;
+
+fn two_sum(nums: Vec<i32>, target: i32) -> Option<(usize, usize)> {
+    let mut num_map = HashMap::new();
+    for (i, &num) in nums.iter().enumerate() {
+        let diff = target - num;
+        if let Some(&j) = num_map.get(&diff) {
+            return Some((j, i));
+        }
+        num_map.insert(num, i);
+    }
+    None
+}
+```
+
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+fun twoSum(nums: IntArray, target: Int): IntArray? {
+    val numMap = mutableMapOf<Int, Int>()
+    for (i in nums.indices) {
+        val diff = target - nums[i]
+        if (numMap.containsKey(diff)) {
+            return intArrayOf(numMap[diff]!!, i)
+        }
+        numMap[nums[i]] = i
+    }
+    return null
+}
+```
+
+</TabItem>
+<TabItem value="ts" label="TypeScript">
+
+```ts
+function twoSum(nums: number[], target: number): number[] | null {
+    const numMap = new Map<number, number>();
+    for (let i = 0; i < nums.length; i++) {
+        const diff = target - nums[i];
+        if (numMap.has(diff)) {
+            return [numMap.get(diff)!, i];
+        }
+        numMap.set(nums[i], i);
+    }
+    return null;
+}
+```
+
+</TabItem>
+</Tabs>
+
+**代码解析**
+
+- `num_dict = {}`: 创建一个空的哈希表。
+- `for i, num in enumerate(nums)`: 遍历数组，获取每个元素及其下标。
+- `diff = target - num`: 计算目标值与当前元素的差值。
+- `if diff in num_dict`: 检查差值是否在哈希表中。
+- `num_dict[num] = i`: 如果差值不在哈希表中，将当前元素及其下标存入哈希表。
+
+**算法分析**
+
+- 时间复杂度：O(n)，其中 n 是数组的长度。每个元素只遍历一次。
+- 空间复杂度：O(n)，需要存储哈希表中的元素。
+
+## 回文数
+
+### 题目描述
+
+给定一个整数 `x`，请你判断它是否是一个回文数，如果它是回文数，返回 `true`；否则，返回 `false`。
+
+回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+
+### 示例
+
+输入：`x = 121`
+
+输出：`true`
+
+描述：121 正序和倒序都是 121。
+
+### 暴力解法
+
+**核心原理**
+
+将整数转换为字符串，然后比较字符串的正序和倒序是否相同，可以通过字符串提供的方法或手动实现遍历。
+
+**代码**
+
+<Tabs groupId='leetcode'>
+<TabItem value="py" label="Python">
+```py
+def is_palindrome(x):
+    s = str(x)
+    return s == s[::-1]
+```
+</TabItem>
+<TabItem value="c" label="C">
+```c
+#include <stdio.h>
+#include <string.h>
+int isPalindrome(int x) {
+    if (x < 0) return 0; // 负数不是回文数
+    char str[12]; // 足够存储 int 的字符串表示
+    sprintf(str, "%d", x);
+    int len = strlen(str);
+    for (int i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - 1 - i]) {
+            return 0; // 不相等则不是回文数
+        }
+    }
+    return 1; // 是回文数
+}
+```
+</TabItem>
+<TabItem value="cpp" label="C++">
+```cpp
+#include <string>
+using namespace std;
+bool isPalindrome(int x) {
+    if (x < 0) return false; // 负数不是回文数
+    string s = to_string(x);
+    int len = s.length();
+    for (int i = 0; i < len / 2; i++) {
+        if (s[i] != s[len - 1 - i]) {
+            return false; // 不相等则不是回文数
+        }
+    }
+    return true; // 是回文数
+}
+```
+</TabItem>
+<TabItem value="java" label="Java">
+```java
+public boolean isPalindrome(int x) {
+    if (x < 0) return false; // 负数不是回文数
+    String s = String.valueOf(x);
+    int len = s.length();
+    for (int i = 0; i < len / 2; i++) {
+        if (s.charAt(i) != s.charAt(len - 1 - i))
+            return false; // 不相等则不是回文数
+    }
+    return true; // 是回文数
+}
+```
+</TabItem>
+<TabItem value="csharp" label="C#">
+```csharp
+public bool IsPalindrome(int x) {
+    if (x < 0) return false; // 负数不是回文数
+    string s = x.ToString();
+    int len = s.Length;
+    for (int i = 0; i <TabItem len / 2; i++) {
+        if (s[i] != s[len - 1 - i])
+            return false; // 不相等则不是回文数
+    }
+    return true; // 是回文数
+}
+```
+</TabItem>
+<TabItem value="js" label="JavaScript">
+```js
+function isPalindrome(x) {
+    if (x < 0) return false; // 负数不是回文数
+    const s = x.toString();
+    const len = s.length;
+    for (let i = 0; i < len / 2; i++) {
+        if (s[i] !== s[len - 1 - i]) {
+            return false; // 不相等则不是回文数
+        }
+    }
+    return true; // 是回文数
+}
+```
+</TabItem>
+<TabItem value="go" label="Go">
+```go
+func isPalindrome(x int) bool {
+    if x < 0 {
+        return false // 负数不是回文数
+    }
+    s := strconv.Itoa(x)
+    len := len(s)       
+    for i := 0; i < len/2; i++ {
+        if s[i] != s[len-1-i] {
+            return false // 不相等则不是回文数
+        }
+    }
+    return true // 是回文数
+}
+```
+</TabItem>
+<TabItem value="rust" label="Rust">
+```rust
+fn is_palindrome(x: i32) -> bool {
+    if x < 0 {  
+        return false; // 负数不是回文数
+    }
+    let s = x.to_string();
+    let len = s.len();
+    for i in 0..len / 2 {
+        if s.chars().nth(i) != s.chars().nth(len - 1 - i) {
+            return false; // 不相等则不是回文数
+        }       
+    }
+    true // 是回文数
+}
+```
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+```kotlin
+fun isPalindrome(x: Int): Boolean {
+    if (x < 0) return false // 负数不是回文数
+    val s = x.toString()
+    val len = s.length
+    for (i in 0 until len / 2) {
+        if (s[i] != s[len - 1 - i]) {
+            return false // 不相等则不是回文数
+        }
+    }
+    return true // 是回文数
+}
+```
+</TabItem>
+<TabItem value="ts" label="TypeScript">
+```ts
+function isPalindrome(x: number): boolean {
+    if (x < 0) return false; // 负数不是回文数
+    const s = x.toString();
+    const len = s.length;
+    for (let i = 0; i < len / 2; i++) {
+        if (s[i] !== s[len - 1 - i]) {
+            return false; // 不相等则不是回文数
+        }
+    }
+    return true; // 是回文数
+}
+```
+</TabItem>
+</Tabs>
+
+**代码解析**
+
+- `s = str(x)`: 将整数转换为字符串。
+- `s[::-1]`: 获取字符串的倒序。
+- `if s == s[::-1]`: 比较正序和倒序是否相同。
+- `return True/False`: 返回判断结果。
+
+**算法分析**
+
+- 时间复杂度：O(n)，其中 n 是整数的位数。需要遍历字符串的一半。
+- 空间复杂度：O(n)，需要存储字符串表示。
+
+### 数学方法
+
+将整数进行反转，判断反转后的整数是否与原整数相同。可以通过取模和除法操作逐位提取数字。如果为 0 或负数，则直接返回 false。反转过程中需要注意整数溢出的问题。所以在反转时只反转一半的数字即可。
+
+**核心原理**
+
+从原数字的末尾开始提取数字，构建反转后的数字。每次提取一个数字，将其添加到反转结果中。直到原数字小于等于反转结果。例如 1221 在执行两次后，原数字剩余 12，提取出的数字为 12。如果为奇数，对 121 剩余 1，提取出的数字为 12，对 12 进行整除 10 后剩余 1，提取出的数字为 1。如果提取数字相同，则为回文数。
+
+**代码**
+
+<Tabs groupId='leetcode'>
+<TabItem value="py" label="Python">
+```py
+def is_palindrome(x):
+    if x < 0 or (x % 10 == 0 and x != 0):
+        return False
+    reversed_num = 0
+    while x > reversed_num:
+        reversed_num = reversed_num * 10 + x % 10
+        x //= 10
+    return x == reversed_num or x == reversed_num // 10
+```
+</TabItem>
+<TabItem value="c" label="C">
+```c
+#include <stdio.h>
+int isPalindrome(int x) {
+    if (x < 0 || (x % 10 == 0 && x != 0)) return 0; // 负数或末尾为 0 的非零数不是回文数
+    int reversed = 0;
+    while (x > reversed) {
+        reversed = reversed * 10 + x % 10;
+        x /= 10;
+    }
+    return x == reversed || x == reversed / 10; // 检查是否相等
+}
+```
+</TabItem>
+<TabItem value="cpp" label="C++">
+```cpp
+#include <cmath>
+using namespace std;    
+bool isPalindrome(int x) {
+    if (x < 0 || (x % 10 == 0 && x != 0)) return false; // 负数或末尾为 0 的非零数不是回文数
+    int reversed = 0;
+    while (x > reversed) {
+        reversed = reversed * 10 + x % 10;
+        x /= 10;
+    }
+    return x == reversed || x == reversed / 10; // 检查是否相等
+}
+```
+</TabItem>
+<TabItem value="java" label="Java">
+```java
+public boolean isPalindrome(int x) {
+    if (x < 0 || (x % 10 == 0 && x != 0)) return false; // 负数或末尾为 0 的非零数不是回文数
+    int reversed = 0;
+    while (x > reversed) {
+        reversed = reversed * 10 + x % 10;
+        x /= 10;
+    }
+    return x == reversed || x == reversed / 10; // 检查是否相等
+}
+```
+</TabItem>
+<TabItem value="csharp" label="C#">
+```csharp
+public bool IsPalindrome(int x) {
+    if (x <TabItem 0 || (x % 10 == 0 && x != 0)) return false; // 负数或末尾为 0 的非零数  
+    int reversed = 0;
+    while (x > reversed) {
+        reversed = reversed * 10 + x % 10;
+        x /= 10;
+    }
+    return x == reversed || x == reversed / 10; // 检查是否相等
+}
+```
+</TabItem>
+<TabItem value="js" label="JavaScript">
+```js
+function isPalindrome(x) {
+    if (x < 0 || (x % 10 === 0 && x !== 0)) return false; // 负数或末尾为 0 的非零数不是回文数
+    let reversed = 0;
+    while (x > reversed) {
+        reversed = reversed * 10 + x % 10;
+        x = Math.floor(x / 10);
+    }
+    return x === reversed || x === Math.floor(reversed / 10); // 检查是否相等
+}
+```
+</TabItem>
+<TabItem value="go" label="Go">
+```go
+func isPalindrome(x int) bool {
+    if x < 0 || (x%10 == 0 && x != 0) {
+        return false
+    }
+    reversed := 0
+    for x > reversed {
+        reversed = reversed*10 + x%10
+        x /= 10
+    }
+    return x == reversed || x == reversed/10
+}
+```
+</TabItem>
+<TabItem value="rust" label="Rust">
+```rust
+fn is_palindrome(x: i32) -> bool {
+    if x < 0 || (x % 10 == 0 && x != 0) {
+        return false;
+    }
+    let mut reversed = 0;
+    let mut original = x;
+    while original > 0 {
+        reversed = reversed * 10 + original % 10;
+        original /= 10;
+    }
+    x == reversed
+}
+```
+</TabItem>
+<TabItem value="kotlin" label="Kotlin">
+```kotlin
+fun isPalindrome(x: Int): Boolean {
+    if (x < 0 || (x % 10 == 0 && x != 0)) return false
+    var reversed = 0
+    var original = x
+    while (original > 0) {
+        reversed = reversed * 10 + original % 10
+        original /= 10
+    }
+    return x == reversed
+}
+```
+</TabItem>
+<TabItem value="ts" label="TypeScript">
+```ts
+function isPalindrome(x: number): boolean {
+    if (x < 0 || (x % 10 === 0 && x !== 0)) return false;
+    let reversed = 0;
+    let original = x;
+    while (original > 0) {
+        reversed = reversed * 10 + original % 10;
+        original = Math.floor(original / 10);
+    }
+    return x === reversed;
+}
+```
+</TabItem>
+</Tabs>
+
+**代码解析**
+
+- `if x < 0 or (x % 10 == 0 and x != 0)`: 处理特殊情况。负数不是回文数。如果数字的最后一位是 0，为了使之成为回文数，第一位也需要是 0，只有 0 满足。
+- `reversed_num = 0`: 初始化反转后的数字。
+- `while x > reversed_num`: 循环直到反转的数字大于或等于原数字的剩余部分，此时已处理一半的位数。
+- `reversed_num = reversed_num * 10 + x % 10`: 取出原数字的最后一位，加到反转数字的末尾。
+- `x //= 10`: 移除原数字的最后一位。
+- `return x == reversed_num or x == reversed_num // 10`: 判断是否为回文数。如果位数为偶数，`x` 和 `reversed_num` 相等；如果位数为奇数，`reversed_num` 的最后一位是原数字的中间位，通过 `reversed_num // 10` 去掉后与 `x` 比较。
+
+**算法分析**
+
+- 时间复杂度：O(log(n))，其中 n 是整数的大小。数字的位数与数字大小的对数成正比。
+- 空间复杂度：O(1)，只使用了常数级别的额外空间。
